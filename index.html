@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Baile Sertanejo ✨</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="baile-container">
+    <div class="fundo-baile"></div>
+
+    <div class="convite-card" id="conviteCard">
+      <div class="portao-animacao" id="portaoAnimacao">
+        <div class="portao-lado portao-esquerdo"></div>
+        <div class="portao-lado portao-direito"></div>
+      </div>
+      
+      <div class="conteudo-baile" id="conteudoBaile">
+        <div class="data-evento">
+          <p>30/08</p>
+          <p>Baile Sertanejo</p>
+        </div>
+        
+        <h1>Topa ir comigo nesse baile?</h1>
+        <p>Seria nostálgico e bem divertido!</p>
+        <p class="ingresso-texto">Ah, e não se preocupe com o ingresso, ele é por minha conta! 😉</p>
+
+        <form action="https://formspree.io/f/xgvzgwar" method="POST">
+          <div class="buttons">
+            <input type="hidden" name="resposta" id="resposta-baile" value="">
+            <button type="submit" id="btn-sim-baile" class="btn-baile">Sim &#x1F496;</button>
+            <button type="submit" id="btn-nao-baile" class="btn-baile">Não &#x1F615;</button>
+          </div>
+        </form>
+        <button id="open-popup-btn" class="open-popup-btn">Conferir os Detalhes</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="evento-popup" class="evento-popup-overlay">
+    <div class="evento-popup-content">
+      <button class="close-btn" id="close-popup-btn">&times;</button>
+      <img src="baile.jpg" alt="Detalhes do Baile Sertanejo" class="baile-detalhes-img">
+    </div>
+  </div>
+
+  <audio id="musica-baile" src="casou-certinho.mp3" preload="auto" loop></audio>
+  <button id="play-pause-btn" class="play-pause-btn">▶️</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

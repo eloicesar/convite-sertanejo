@@ -1,0 +1,252 @@
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.baile-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fundo-baile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('baile.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.9);
+    transform: scale(1.05);
+    z-index: -2;
+}
+
+.convite-card {
+    width: 500px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.portao-animacao {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.portao-lado {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #654321;
+    transition: transform 1.5s ease-out;
+}
+
+.portao-esquerdo {
+    left: 0;
+    transform-origin: left;
+    transform: rotateY(0deg);
+}
+
+.portao-direito {
+    right: 0;
+    transform-origin: right;
+    transform: rotateY(0deg);
+}
+
+.portao-aberto .portao-esquerdo {
+    transform: rotateY(-100deg);
+}
+
+.portao-aberto .portao-direito {
+    transform: rotateY(100deg);
+}
+
+.conteudo-baile {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-in 1s;
+}
+
+.portao-aberto ~ .conteudo-baile {
+    opacity: 1;
+    visibility: visible;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #654321;
+    font-size: 3em;
+    margin: 10px 0;
+}
+
+p {
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.data-evento {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #8B4513;
+  margin-bottom: 20px;
+}
+
+.ingresso-texto {
+  font-size: 1em;
+  font-style: italic;
+  color: #654321;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.btn-baile {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background-color: #8B4513;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-baile:hover {
+    transform: scale(1.05);
+    background-color: #A0522D;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.open-popup-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #A0522D;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.open-popup-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Modal/Popup Styles */
+.evento-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.evento-popup-overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.evento-popup-content {
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.baile-detalhes-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 101;
+  transition: color 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Play/Pause Button */
+.play-pause-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #8B4513;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .convite-card {
+        width: 90%;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .btn-baile {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .open-popup-btn {
+      font-size: 1em;
+      padding: 10px 20px;
+    }
+}
