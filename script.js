@@ -1,4 +1,6 @@
 const portaoAnimacao = document.getElementById('portaoAnimacao');
+const conviteCard = document.getElementById('conviteCard');
+const iniciarConviteBtn = document.getElementById('iniciar-convite-btn');
 const btnSimBaile = document.getElementById('btn-sim-baile');
 const btnNaoBaile = document.getElementById('btn-nao-baile');
 const inputRespostaBaile = document.getElementById('resposta-baile');
@@ -8,24 +10,32 @@ const eventoPopup = document.getElementById('evento-popup');
 const musicaBaile = document.getElementById('musica-baile');
 const playPauseBtn = document.getElementById('play-pause-btn');
 
+// Botão para iniciar o convite
+iniciarConviteBtn.addEventListener('click', () => {
+  iniciarConviteBtn.style.display = 'none';
+  conviteCard.classList.add('show');
+  abrirPortao();
+  musicaBaile.play();
+  playPauseBtn.textContent = '⏸️';
+});
+
 // Função para iniciar a animação de abertura do portão
 function abrirPortao() {
     portaoAnimacao.classList.add('portao-aberto');
-    musicaBaile.play();
-    playPauseBtn.textContent = '⏸️';
 }
-
-// Inicia a animação de abertura do portão quando a página carrega
-window.addEventListener('load', abrirPortao);
 
 // Evento para o botão "Sim"
 btnSimBaile.addEventListener('click', () => {
     inputRespostaBaile.value = 'Sim';
+    // Submete o formulário
+    document.querySelector('form').submit();
 });
 
 // Evento para o botão "Não"
 btnNaoBaile.addEventListener('click', () => {
     inputRespostaBaile.value = 'Nao';
+    // Submete o formulário
+    document.querySelector('form').submit();
 });
 
 // Lógica do Popup (Modal)
